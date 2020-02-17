@@ -12,7 +12,7 @@ let log = require('./controllers/logcontroller')
 sequelize.sync();
 app.use(bodyParser.json());
 
-app.use(require("./middleware/header"));
+app.use(require("./middleware/headers"));
 
 // app.get('/', function(request, response){
 // response.send("Hello World")
@@ -31,6 +31,6 @@ app.use(require("./middleware/validate-session"));
 app.use("/authtest", authTest);
 app.use('/api', log)
 
-app.listen(4000, function() {
-  console.log("app is listening on 3000 and hello world");
+app.listen(process.env.PORT, function() {
+  console.log(`app is listening on ${process.env.PORT} and hello world`);
 });
